@@ -3,11 +3,29 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.map {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.fireAnimation {
+  width: 2rem;
+  height: 2rem;
+}
+
+.loadingAnimation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 30vh;
+  height: 30vh;
 }
