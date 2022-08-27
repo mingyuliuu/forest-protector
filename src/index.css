@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.map {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.fireAnimation {
+  width: 2rem;
+  height: 2rem;
+}
+
+.loadingAnimation {
+  display: flex;
+  /*justify-content: center;
+  align-items: center;*/
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  margin: 0 auto;
+  width: 30vw;
+  height: 30vh;
+}
