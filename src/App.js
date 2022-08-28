@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Map from "./components/Map";
+import Login from "./components/Login"
 import { Player } from "@lottiefiles/react-lottie-player";
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
   }, []);
 
   return (
+    <Login />
+    /*
     <div className="App">
       {!isLoading ? (
         <Map eventData={eventData} />
@@ -36,6 +39,7 @@ function App() {
         />
       )}
     </div>
+    */
   );
 }
 
