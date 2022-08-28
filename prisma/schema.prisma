@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      String  @id @default(uuid())
+  name    String
+  type    Role    @default(OrdinaryUser)
+  contact String
+  address String?
+  posts   Post[]
+}
+
+model Post {
+  id          BigInt           @id @default(autoincrement())
+  authorId    String
+  time        DateTime         @default(now())
+  description String           @default("")
+  recordID    BigInt?
+  author      User             @relation(fields: [authorId], references: [id])
+  record      WildfireRecords? @relation(fields: [recordID], references: [id])
+  images      Image[]
+}
+
+model WildfireRecords {
+  id           BigInt     @id @default(autoincrement())
+  coordinateID BigInt
+  time         DateTime
+  windspeed    Float
+  propertyLoss String
+  casualties   Int
+  coordinate   Coordinate @relation(fields: [coordinateID], references: [id])
+  posts        Post[]
+}
+
+model Image {
+  id     BigInt @id @default(autoincrement())
+  url    String
+  postID BigInt
+  post   Post   @relation(fields: [postID], references: [id])
+}
+
+model Coordinate {
+  id              BigInt            @id @default(autoincrement())
+  x               Float
+  y               Float
+  areaID          BigInt
+  area            Area              @relation(fields: [areaID], references: [id])
+  WildfireRecords WildfireRecords[]
+}
+
+model Area {
+  id          BigInt       @id @default(autoincrement())
+  region      String?
+  country     String
+  continent   String
+  coordinates Coordinate[]
+}
+
+enum Role {
+  OrdinaryUser
+  Firefighter
+}

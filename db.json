@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "0000aaaa",
+      "time": "2022-03-09",
+      "description": "Hello",
+      "recordID": 1000,
+      "coordinateID": 1,
+      "images": [
+        1
+      ]
+    }
+  ],
+  "images": [
+    {
+      "id": 1,
+      "url": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2021_25/3411506/200911-wildfire-california-worst-widlfire-year-se-236p.jpg",
+      "recordID": 1000
+    }
+  ],
+  "users": [
+    {
+      "id": "0000aaaa",
+      "name": "admin",
+      "type": "OrdinaryUser",
+      "contact": "00000000",
+      "address": "",
+      "posts": [
+        1
+      ]
+    }
+  ],
+  "wildfireRecords": [
+    {
+      "id": 1000,
+      "title": "Null",
+      "link": "http://volcano.si.edu/volcano.cfm?vn=300250",
+      "coordinateID": 1,
+      "time": "2022-01-21",
+      "posts": []
+    }
+  ],
+  "coordinates": [
+    {
+      "id": 1,
+      "lat": -102.3,
+      "lng": -203.10,
+      "recordID": 1000
+    }
+  ]
+}
