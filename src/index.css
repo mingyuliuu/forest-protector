@@ -10,10 +10,29 @@ code {
     monospace;
 }
 
+.mapView {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
 .map {
   height: 100vh;
   width: 100vw;
   position: relative;
+  margin: 0;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  
+}
+
+.detailCard {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .fireAnimation {
@@ -28,4 +47,14 @@ code {
   margin: 0 auto;
   width: 30vh;
   height: 30vh;
+}
+
+.slidingAnimation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40vh;
+  margin-bottom: 40vh;
+  width: 8vh;
+  height: 100vh;
 }
