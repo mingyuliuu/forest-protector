@@ -17,7 +17,7 @@ For our login page, we used Userfront to help us securely record the signup data
 ## By Team Toasted Geese
 * [Mingyu Liu](https://github.com/mingyuliuu) - Design and implement map page UI; fetch and rendor data from our database; implement UI and algorithms for details side panel and histogram.
 * [Xintong Li](https://github.com/XintongLi1) - Setup Cockroach database, design and implement a relational database using prisma and typescript. Implement data query and storing APIs.
-* [Alice Wang](https://github.com/alicewangzm) - 
+* [Alice Wang](https://github.com/alicewangzm) - Signup using Userfront, UI design for the login page
 * [Raven Xu](https://github.com/RavenXu1122) - Developed the location search feature which enabled Google autocomplete; implemented panning to specific location.
 
 ## Demo Video
