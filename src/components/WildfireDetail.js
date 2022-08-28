@@ -6,16 +6,9 @@ import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { Player } from "@lottiefiles/react-lottie-player";
-
-const faces = [
-  "http://i.pravatar.cc/300?img=1",
-  "http://i.pravatar.cc/300?img=2",
-  "http://i.pravatar.cc/300?img=3",
-  "http://i.pravatar.cc/300?img=4",
-];
+import { StatsHistogram } from "./StatsHistogram";
 
 const muiBaseTheme = createTheme();
 
@@ -29,7 +22,7 @@ const theme = {
       root: {
         "&.MuiWildfireCard": {
           width: "22vw",
-          maxHeight: "45vh",
+          maxHeight: "60vh",
           margin: "auto",
           boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
           "&:hover": {
@@ -52,11 +45,9 @@ const theme = {
             lineHeight: 1.8,
           },
           "& .MuiAvatar-root": {
+            textAlign: "right",
             display: "inline-block",
             border: "2px solid white",
-            "&:not(:first-of-type)": {
-              marginLeft: -muiBaseTheme.spacing.unit,
-            },
           },
         },
       },
@@ -71,16 +62,19 @@ const WildfireDetail = (detailInfo) => {
     setData({ ...detailInfo, isSpotted: false });
   }, [detailInfo]);
 
+  console.log(data ? data.info.stats : "");
+
   return (
     <JssProvider generateClassName={generateClassName}>
       <MuiThemeProvider theme={createTheme(theme)}>
         <div className="rightContainer">
-          <div onClick={detailInfo.close}><Player
-            src="https://assets6.lottiefiles.com/packages/lf20_unswjcf1.json"
-            className="slidingAnimation"
-            loop
-            autoplay
-          />
+          <div onClick={detailInfo.close}>
+            <Player
+              src="https://assets6.lottiefiles.com/packages/lf20_unswjcf1.json"
+              className="slidingAnimation"
+              loop
+              autoplay
+            />
           </div>
           <div className="detailCard">
             <Card className={"MuiWildfireCard"} style={{ marginBottom: "5vh" }}>
@@ -90,24 +84,47 @@ const WildfireDetail = (detailInfo) => {
                 }
               />
               <CardContent>
-                <Typography
-                  className={"MuiTypography--heading"}
-                  variant={"h6"}
-                  gutterBottom
-                >
-                  Wildfire Details
-                </Typography>
-                <Typography
-                  className={"MuiTypography--text"}
-                  variant={"caption"}
+                <div
                   style={{
-                    whiteSpace: "pre-line",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    width: "100%",
                   }}
                 >
-                  {data ? data.info.title + "\n" : "N/A"}
-                  ID: {data ? data.info.id + "\n" : "N/A"}
-                  Date: {data ? data.info.time + "\n" : "N/A"}
-                </Typography>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <Typography
+                      className={"MuiTypography--heading"}
+                      variant={"h6"}
+                      gutterBottom
+                    >
+                      Wildfire Details
+                    </Typography>
+                    <Typography
+                      className={"MuiTypography--text"}
+                      variant={"caption"}
+                      style={{
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      {data ? data.info.title + "\n" : "N/A"}
+                      ID: {data ? data.info.id + "\n" : "N/A"}
+                      Date:{" "}
+                      {data ? data.info.time.substring(0, 10) + "\n" : "N/A"}
+                    </Typography>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <Avatar
+                      key={"spot"}
+                      src={"https://img.icons8.com/bubbles/344/like.png"}
+                    />
+                    <Avatar
+                      key={"show-more"}
+                      src={"https://img.icons8.com/bubbles/344/quote-left.png"}
+                      onClick={() => window.open(data ? data.info.link : "/", "_blank")}
+                    />
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
@@ -120,21 +137,7 @@ const WildfireDetail = (detailInfo) => {
                 >
                   Wildfire Details
                 </Typography>
-                <Typography
-                  className={"MuiTypography--text"}
-                  variant={"caption"}
-                  style={{
-                    whiteSpace: "pre-line",
-                  }}
-                >
-                  {data ? data.info.title + "\n" : "N/A"}
-                  ID: {data ? data.info.id + "\n" : "N/A"}
-                  Date: {data ? data.info.time + "\n" : "N/A"}
-                </Typography>
-                <Divider light />
-                {faces.map((face) => (
-                  <Avatar key={face} src={face} />
-                ))}
+                <StatsHistogram histogramData={data ? data.info.stats : []} />
               </CardContent>
             </Card>
           </div>
