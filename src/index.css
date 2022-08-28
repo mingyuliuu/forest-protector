@@ -42,8 +42,6 @@ code {
 
 .loadingAnimation {
   display: flex;
-  /*justify-content: center;
-  align-items: center;*/
   position: absolute;
   top: 35%;
   left: 35%;

@@ -7,8 +7,9 @@ const absoluteDifference = (d1, d2) => {
   return Math.abs(d1 - d2);
 };
 
-const Map = ({ recentData, detailData, center, zoom }) => {
+const Map = ({ recentData, detailData }) => {
   const [wildfireDetail, setWildfireDetail] = useState(null);
+  // Whether the details panel is showing or hiding
   const [isShowingDetail, setIsShowingDetail] = useState(false);
 
   const wildfireMarkers =
@@ -18,8 +19,7 @@ const Map = ({ recentData, detailData, center, zoom }) => {
           // 8 corresponds to Wildfires
           if (event.categories[0].id !== 8) return null;
 
-          
-          //const temp = Date.parse(detailData[0].geometries[0].date);
+          // Filter out only wildfires near the current wildfire displaying
           const closeEvents = detailData.filter(
             (anotherEvent) =>
               absoluteDifference(
@@ -41,29 +41,13 @@ const Map = ({ recentData, detailData, center, zoom }) => {
               ) <
               1000 * 3600 * 24 * 60
           );
+          */
 
-          const eventsIn30Days = closeEvents.filter(
-            (thisEvent) =>
-              absoluteDifference(
-                Date.parse(thisEvent.geometries[0].date),
-                Date.parse(event.geometries[0].date)
-              ) <
-              1000 * 3600 * 24 * 30
-          );
-
-          const eventsIn15Days = closeEvents.filter(
-            (thisEvent) =>
-              absoluteDifference(
-                Date.parse(thisEvent.geometries[0].date),
-                Date.parse(event.geometries[0].date)
-              ) <
-              1000 * 3600 * 24 * 15
-          );
-
-          const statsData = [eventsIn15Days.length, eventsIn30Days.length, eventsIn60Days.length];
-*/
+          // Keep only the month of the wildfires for drawing histograms
           const statsData = closeEvents.map((thisEvent) => {
-            return { month: parseInt(thisEvent.geometries[0].date.substring(5, 7)) };
+            return {
+              month: parseInt(thisEvent.geometries[0].date.substring(5, 7)),
+            };
           });
 
           return (
