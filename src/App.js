@@ -12,7 +12,7 @@ function App() {
     setIsLoading(true);
 
     const res1 = await fetch("https://eonet.gsfc.nasa.gov/api/v2.1/events?days=15"); // 15, 30, 60
-    const res2 = await fetch("https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?days=60");
+    const res2 = await fetch("https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?days=365");
     var { events } = await res1.json();
     setRecentData(events);
 
