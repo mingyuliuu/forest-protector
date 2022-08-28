@@ -18,6 +18,7 @@ const Map = ({ recentData, detailData, center, zoom }) => {
           // 8 corresponds to Wildfires
           if (event.categories[0].id !== 8) return null;
 
+          
           //const temp = Date.parse(detailData[0].geometries[0].date);
           const closeEvents = detailData.filter(
             (anotherEvent) =>
@@ -31,6 +32,7 @@ const Map = ({ recentData, detailData, center, zoom }) => {
               ) < 3
           );
 
+          /*
           const eventsIn60Days = closeEvents.filter(
             (thisEvent) =>
               absoluteDifference(
@@ -59,6 +61,10 @@ const Map = ({ recentData, detailData, center, zoom }) => {
           );
 
           const statsData = [eventsIn15Days.length, eventsIn30Days.length, eventsIn60Days.length];
+*/
+          const statsData = closeEvents.map((thisEvent) => {
+            return { month: parseInt(thisEvent.geometries[0].date.substring(5, 7)) };
+          });
 
           return (
             <WildfireMarker

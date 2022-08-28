@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { StatsHistogram } from "./StatsHistogram";
+import { Histogram } from "./Histogram";
 
 const muiBaseTheme = createTheme();
 
@@ -22,7 +23,7 @@ const theme = {
       root: {
         "&.MuiWildfireCard": {
           width: "22vw",
-          maxHeight: "60vh",
+          maxHeight: "50vh",
           margin: "auto",
           boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
           "&:hover": {
@@ -109,7 +110,7 @@ const WildfireDetail = (detailInfo) => {
                     >
                       {data ? data.info.title + "\n" : "N/A"}
                       ID: {data ? data.info.id + "\n" : "N/A"}
-                      Date:{" "}
+                      Date: {" "}
                       {data ? data.info.time.substring(0, 10) + "\n" : "N/A"}
                     </Typography>
                   </div>
@@ -130,14 +131,8 @@ const WildfireDetail = (detailInfo) => {
 
             <Card className={"MuiWildfireCard"}>
               <CardContent>
-                <Typography
-                  className={"MuiTypography--heading"}
-                  variant={"h6"}
-                  gutterBottom
-                >
-                  Wildfire Details
-                </Typography>
-                <StatsHistogram histogramData={data ? data.info.stats : []} />
+                {/* <StatsHistogram histogramData={data ? data.info.stats : []} /> */}
+                <Histogram histogramData={data ? data.info.stats : []} />
               </CardContent>
             </Card>
           </div>
