@@ -30,10 +30,53 @@ function App() {
     setIsLoading(false);
   };
 
+  const storeEvent = async (eventType, event) => {
+    let url = 'http://localhost:3004/'
+    if (eventType === "recent") {
+      url = 'http://localhost:3004/recentRecords'
+    } else { url = 'http://localhost:3004/detailedRecords' }
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(event),
+    })
+
+    const data = await res.json()
+    console.log(url)
+    console.log(data)
+  }
+
+  const getEvents = async () => {
+    const recent = await fetch('http://localhost:3004/recentRecords')
+    const rData = await recent.json()
+    setRecentData(rData)
+
+    const detailed = await fetch('http://localhost:3004/detailedRecords')
+    const dData = await detailed.json()
+    setDetailData(dData)
+  }
+
+
   // Fetch data from NASA API when the webpage first loads
   useEffect(() => {
-    fetchEvents();
-  }, []);
+    // fetchEvents();
+    const isload = true
+   
+    if (isload) {
+      console.log("get events")
+      getEvents()
+    } else {
+      fetchEvents()
+      recentData.map((event) => {
+        storeEvent("recent", event)
+      })
+      detailData.map((event) => {
+        storeEvent("detailed", event)
+      })
+    }
+  }, [recentData, detailData]);
 
   return (
     <div className="App">

@@ -13,7 +13,7 @@ const Map = ({ recentData, detailData }) => {
   const [isShowingDetail, setIsShowingDetail] = useState(false);
 
   const wildfireMarkers =
-    recentData === null || detailData === null
+    recentData === null || detailData === null || recentData.length === 0 || detailData.length === 0
       ? null
       : recentData.map((event) => {
           // 8 corresponds to Wildfires
