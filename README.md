@@ -3,7 +3,6 @@
 <tr>
 <td>
   Forest Protector, a platform aimed to forecast, report, and prevent wildfires.
-What it does
 Our app forest protector currently allows users to signup and shows a map with reported wildfires retrieved directly from NASA. For each wildfire that is indicated on Google Maps, it has images that people upload from the actual location, below that we have some information about the time, location, and name of the fire. We also provide links for users to know more about this incident. Finally, we also made a histogram analyzing the statistics through wildfires that happens within roughly a radius of 300 kilometers.
 </td>
 </tr>
